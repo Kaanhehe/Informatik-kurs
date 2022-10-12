@@ -9,11 +9,11 @@ Dies sind aber nicht rein die Aufgaben, ich habe sie nochmal auf meine Art geän
 Dieser Code wird regelmäßig geupdatet sobald neue Aufgaben gestellt werden oder Fehler im Code gefunden werden.
 
 # Versionen
-0.9 1. Aufgabe hinzugefügt
+0.9 Altersausgabe Aufgabe hinzugefügt
 
 1.0 Menü hinzugefügt
 
-1.1 1. Aufgabe wurde mit Geburtsdatumsrechner ergänzt
+1.1 Altersausgabe Aufgabe wurde mit Geburtsdatumsrechner ergänzt
 
 1.2 Numberpress Aufgabe wurde hinzugefügt
 
