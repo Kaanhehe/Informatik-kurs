@@ -22,5 +22,4 @@ Dieser Code wird regelmäßig geupdatet sobald neue Aufgaben gestellt werden ode
 1.4 Zahlenraten Spiel Aufgabe hinzugefügt
 
 1.5 Komentare hinzgefügt
-
 1.6 Bugfixes und einige Änderungen
