@@ -1,5 +1,5 @@
-# informatik
-Informatik Kurs
+# Aktuelle Version
+1.6
 
 # Infos
 Dies ist der Code zu allen Aufgaben aus dem Informatikkurs von Hr. Reimherr verbunden mit einem Menü.
@@ -18,6 +18,4 @@ Dieser Code wird regelmäßig geupdatet sobald neue Aufgaben gestellt werden ode
 1.5 Komentare hinzgefügt
 1.6 Bugfixes und einige Änderungen
 
-# Aktuelle Verion
-1.6
 
