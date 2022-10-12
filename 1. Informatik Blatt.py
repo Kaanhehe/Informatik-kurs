@@ -41,6 +41,27 @@ def menu():
     C: Zahlenausgabe
     D: Countdown
     E: Zahlenraten
+    F: ...
+    G: ...
+    H: ...
+    I: ...
+    J: ...
+    K: ...
+    L: ...
+    M: ...
+    N: ...
+    O: ...
+    P: ...
+    Q: ...
+    R: ...
+    S: ...
+    T: ...
+    U: ...
+    V: ...
+    W: ...
+    X: ...
+    Y: ...
+    Z: ...
 
     Bitte gebe hier deine Antwort ein: """)
     print ("""
@@ -81,11 +102,97 @@ def menu():
         sleep(2)
         countdown()
 
+    # E Ausgewählt
     elif choice == "e" or choice == "E":
         print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du hast dich für", "E: Zahlenraten", "entschieden!")
         sleep(2)
         numberraten()
-  
+
+    # F Ausgewählt
+    elif choice == "f" or choice == "F":
+        sleep
+    
+    # G Ausgewählt
+    elif choice == "g" or choice == "G":
+        sleep
+
+    # H Ausgewählt
+    elif choice == "h" or choice == "H":
+        sleep
+
+    # I Ausgewählt
+    elif choice == "i" or choice == "I":
+        sleep
+
+    # J Ausgewählt
+    elif choice == "j" or choice == "J":
+        sleep
+
+    # K Ausgewählt
+    elif choice == "k" or choice == "K":
+        sleep
+
+    # L Ausgewählt
+    elif choice == "l" or choice == "L":
+        sleep
+    
+    # M Ausgewählt
+    elif choice == "m" or choice == "M":
+        sleep
+
+    # N Ausgewählt
+    elif choice == "n" or choice == "N":
+        sleep
+
+    # O Ausgewählt
+    elif choice == "o" or choice == "O":
+        sleep
+
+    # P Ausgewählt
+    elif choice == "p" or choice == "P":
+        sleep
+
+    # Q Ausgewählt
+    elif choice == "q" or choice == "Q":
+        sleep
+
+    # R Ausgewählt
+    elif choice == "r" or choice == "R":
+        sleep
+    
+    # S Ausgewählt
+    elif choice == "s" or choice == "S":
+        sleep
+
+    # T Ausgewählt
+    elif choice == "t" or choice == "T":
+        sleep
+
+    # U Ausgewählt
+    elif choice == "u" or choice == "U":
+        sleep
+
+    # V Ausgewählt
+    elif choice == "v" or choice == "V":
+        sleep
+
+    # W Ausgewählt
+    elif choice == "w" or choice == "W":
+        sleep
+
+    # X Ausgewählt
+    elif choice == "x" or choice == "X":
+        sleep
+
+    # Y Ausgewählt
+    elif choice == "y" or choice == "Y":
+        sleep
+
+    # Z Ausgewählt
+    elif choice == "z" or choice == "Z":
+        sleep
+    
+    # Fehlermeldung
     else:
         print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte antworte nur mit den Angegebenen Buchstaben!")
         sleep(1)
