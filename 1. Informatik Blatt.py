@@ -575,9 +575,5 @@ def numberraten():
 
 
 
-
-
-
-
 #Code
 main()
