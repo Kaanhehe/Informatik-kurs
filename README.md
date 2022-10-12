@@ -1,5 +1,5 @@
 # Aktuelle Version
-1.6
+1.7
 
 # Infos
 Dies ist der Code zu allen Aufgaben aus dem Informatikkurs von Hr. Reimherr verbunden mit einem Menü.
@@ -24,3 +24,5 @@ Dieser Code wird regelmäßig geupdatet sobald neue Aufgaben gestellt werden ode
 1.5 Komentare hinzgefügt
 
 1.6 Bugfixes und einige Änderungen
+
+1.7 Zahlenraten Fehlermeldung repariert
