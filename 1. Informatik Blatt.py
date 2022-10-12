@@ -535,43 +535,55 @@ def countdownprocinv():
 
 def numberraten():
     solved = False
-    tries = 0
     # Öffnungstext
     print()
     print(f"{bcolors.BOLD}{bcolors.FAIL}Zahlenraten:{bcolors.ENDC}", f"{bcolors.BOLD}Du hast Zahlenraten gestartet!{bcolors.ENDC}")
     print()
+    sleep(1)
+    numberratenque()
+        
+
+def numberratenque():
     try:
         # 1. Frage
         searched = int(getpass(f"{bcolors.BOLD}{bcolors.FAIL}Spieler 1: {bcolors.ENDC}Wie soll die zu erratene Zahl lauten? "))
-    except TypeError:
+    except ValueError:
         # Fehlermeldung
         print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte anworte nur mit Zahlen!")
         sleep(2)
-        numberraten()
+        numberratenque()
     else:
-        while solved == False:
-            try:
-                sleep(1)
-                # 2. Frage (Loop)
-                rate = int(input(f"{bcolors.BOLD}{bcolors.WARNING}Spieler 2: {bcolors.ENDC}Wie möchtest du raten? "))
-            except TypeError:
-                print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte anworte nur mit Zahlen!")
-                sleep(2)
-                numberraten()
-            else:
-                # Antworten
-                if rate > searched:
-                    tries = tries + 1
-                    print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du hast zu hoch geraten!")
-                if rate < searched:
-                    tries = tries + 1
-                    print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du hast zu niedrig geraten!")
-                if rate == searched:
-                    # Ende
-                    tries = tries + 1
-                    print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du hast es geschafft, das Spiel ist beendet. Die gesuchte Zahl war:", searched)
-                    print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}{bcolors.BOLD}{bcolors.WARNING}Spieler 2 {bcolors.ENDC}hat", tries, "versuche gebraucht um die gesuchte Zahl zu finden!")
-                    solved = True
+        sleep(1)
+        numberratenans(searched)
+
+def numberratenans(searched):
+    solved = False
+    tries = 0
+    while solved == False:
+        try:
+            # 2. Frage (Loop)
+            rate = int(input(f"{bcolors.BOLD}{bcolors.WARNING}Spieler 2: {bcolors.ENDC}Wie möchtest du raten? "))
+        except ValueError:
+            print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte anworte nur mit Zahlen!")
+            sleep(2)
+            numberratenans(searched)
+        else:
+            # Antworten
+            if rate > searched:
+                tries = tries + 1
+                print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du hast zu hoch geraten!")
+            if rate < searched:
+                tries = tries + 1
+                print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du hast zu niedrig geraten!")
+            if rate == searched:
+                # Ende 
+                tries = tries + 1
+                print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du hast es geschafft, das Spiel ist beendet. Die gesuchte Zahl war:", searched)
+                if tries > 1:
+                    print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}{bcolors.BOLD}{bcolors.WARNING}Spieler 2 {bcolors.ENDC}hat", tries, "Versuche gebraucht um die gesuchte Zahl zu finden!")
+                elif tries == 1:
+                    print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}{bcolors.BOLD}{bcolors.WARNING}Spieler 2 {bcolors.ENDC}hat", tries, "Versuch gebraucht um die gesuchte Zahl zu finden!")
+                solved = True
 
 
 
