@@ -1,6 +1,5 @@
 # Imports
 from getpass import getpass
-from signal import valid_signals
 from time import sleep
 from datetime import date
 import csv
