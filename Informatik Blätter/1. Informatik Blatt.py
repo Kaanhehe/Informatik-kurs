@@ -612,6 +612,5 @@ def numberratenans(searched):
                 solved = True
 
 
-
 #Code
 main()
