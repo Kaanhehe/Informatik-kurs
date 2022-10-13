@@ -1,5 +1,5 @@
 # Aktuelle Version
-1.1.6
+1.1.3.4
 
 # Infos
 Dies ist der Code zu allen Aufgaben aus dem Informatikkurs von Hr. Reimherr verbunden mit einem Menü.
@@ -21,10 +21,12 @@ Dieser Code wird regelmäßig geupdatet sobald neue Aufgaben gestellt werden ode
 
 1.1.3 Zahlenraten Spiel Aufgabe hinzugefügt
 
-1.1.4 Komentare hinzgefügt
+1.1.3 Komentare hinzgefügt
 
-1.1.5 Bugfixes und einige Änderungen
+1.1.3.1 Bugfixes und einige Änderungen
 
-1.1.5.1 Zahlenraten Fehlermeldung repariert
+1.1.3.2 Zahlenraten Fehlermeldung repariert
 
-1.1.5.2 Geburtsdatum Rechner Fehlermeldung hinzugefügt
+1.1.3.3 Geburtsdatum Rechner Fehlermeldung hinzugefügt
+
+1.1.3.4 Countdown Ende und Kommentare hinzugefügt 

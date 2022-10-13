@@ -318,26 +318,28 @@ def ageanswer(age):
 
 #### Date Calc ####
 def datecalcmenu():
+        # Öffnungstext
         print()
         print(f"{bcolors.BOLD}{bcolors.FAIL}Geburtsdatum Rechner: {bcolors.ENDC}{bcolors.BOLD}Du hast Geburtsdatum Rechner geöffnet!{bcolors.ENDC}")
         print()
         sleep(1)
         datecalcbirth()
 
-
 def datecalcbirth():
+    # Fragen
     birthYear = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Was ist dein Geburtsjahr? "))  
     birthMonth = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Was ist dein Geburtsmonat? "))  
     birthDay = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Was ist dein Geburtstag? "))
     try:
+        # Fragen zusammenfügen
         dateOfBirth = date(birthYear, birthMonth, birthDay)  
     except ValueError:
         # Fehlermeldung
         print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte Antworte mit einem echten Geburtsdatum!")
         sleep(1)
         datecalcbirth()
-            
-    datecalc(dateOfBirth)    
+    else:        
+        datecalc(dateOfBirth)    
 
 def datecalc(birthday):
     # Akuteller Tag
@@ -356,7 +358,7 @@ def datecalc(birthday):
     sleep(1)
     ageansque(age_in_years)
 
-#### Ageanswer2 ####
+#### Date Calc to Ageanswer ####
 def ageansque(age_in_years):
     # Fortfahr Frage
     ageansque = input(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC} Möchtest du mit diesem Alter zur Altersantwort fortfahren? ")
@@ -395,6 +397,7 @@ def numberpress():
         sleep(1)
         numberpress()
     
+## Renumber ##    
 def renumber():
     # Öffnungstextr
     print()
@@ -439,7 +442,8 @@ def renumberprocinv():
     else:
         # Ausgabe
         print(f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}", number)
-    
+
+## Numberarea ##    
 def numberarea():
     # Öffnungstext
     print()
@@ -503,6 +507,7 @@ def countdown():
     print(f"{bcolors.BOLD}{bcolors.FAIL}Countdown: {bcolors.ENDC}{bcolors.BOLD}Du hast Countdown geöffnet!{bcolors.ENDC}")
     print()
     # Frage
+    sleep(1)
     print(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Möchtest du das deine Zahl beim Angeben angezeigt wird?")
     vischoice = input("Bitte antworte hier! ")
     # Antwortscheck (Weiterleitung)
@@ -519,14 +524,16 @@ def countdown():
 def countdownprocvis():
     try:
         # Fragen
+        sleep(1)
         number = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Mit welcher Zahl soll der Countdown starten? "))
+        countend = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Wann soll der Countdown enden? "))
         sleeptime = float(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Wie viele Sekunden sollen zwischen den Zahlen im Countdown sein? "))
     except ValueError:
         # Fehlermeldung
         print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte anworte nur mit Zahlen!")
         sleep(2)
         countdownprocvis()
-    while number > -1:
+    while number == countend:
         # Countdown
         print (number)
         number = number - 1
@@ -536,18 +543,20 @@ def countdownprocinv():
     try:
         # Fragen
         number = int(getpass(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Mit welcher Zahl soll der Countdown starten? "))
-        sleeptime = float(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Wie viele Sekunden sollen zwischen den Zahlen im Countdown sein? "))
+        countend = int(getpass(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Wann soll der Countdown enden? "))
+        sleeptime = float(getpass(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Wie viele Sekunden sollen zwischen den Zahlen im Countdown sein? "))
     except ValueError:
         # Fehlermeldung
         print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte anworte nur mit Zahlen!")
         sleep(2)
         countdownprocinv()
-    while number > -1:
+    while number == countend:
         # Countdown
         print (number)
         number = number - 1
         sleep(sleeptime)
 
+### Numberraten ####
 def numberraten():
     solved = False
     # Öffnungstext
@@ -557,7 +566,6 @@ def numberraten():
     sleep(1)
     numberratenque()
         
-
 def numberratenque():
     try:
         # 1. Frage
@@ -579,6 +587,7 @@ def numberratenans(searched):
             # 2. Frage (Loop)
             rate = int(input(f"{bcolors.BOLD}{bcolors.WARNING}Spieler 2: {bcolors.ENDC}Wie möchtest du raten? "))
         except ValueError:
+            # Fehlermeldung
             print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte anworte nur mit Zahlen!")
             sleep(2)
             numberratenans(searched)
@@ -594,8 +603,10 @@ def numberratenans(searched):
                 # Ende 
                 tries = tries + 1
                 print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du hast es geschafft, das Spiel ist beendet. Die gesuchte Zahl war:", searched)
+                # Bei mehr als 1 Versuch
                 if tries > 1:
                     print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}{bcolors.BOLD}{bcolors.WARNING}Spieler 2 {bcolors.ENDC}hat", tries, "Versuche gebraucht um die gesuchte Zahl zu finden!")
+                # Bei einem Versuch
                 elif tries == 1:
                     print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}{bcolors.BOLD}{bcolors.WARNING}Spieler 2 {bcolors.ENDC}hat", tries, "Versuch gebraucht um die gesuchte Zahl zu finden!")
                 solved = True
