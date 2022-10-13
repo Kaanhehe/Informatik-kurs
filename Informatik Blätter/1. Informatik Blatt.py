@@ -80,14 +80,7 @@ def menu():
     elif choice == "b" or choice == "B":
         print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du hast dich für", "B: Geburtsdatum Rechner", "entschieden!")
         sleep(2)
-        print()
-        print(f"{bcolors.BOLD}{bcolors.FAIL}Geburtsdatum Rechner: {bcolors.ENDC}{bcolors.BOLD}Du hast Geburtsdatum Rechner geöffnet!{bcolors.ENDC}")
-        print()
-        birthYear = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Was ist dein Geburtsjahr? "))  
-        birthMonth = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Was ist dein Geburtsmonat? "))  
-        birthDay = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Was ist dein Geburtstag? "))
-        dateOfBirth = date(birthYear, birthMonth, birthDay)  
-        age = datecalc(dateOfBirth)
+        datecalcmenu()
     
     # C Ausgewählt
     elif choice == "c" or choice == "C":
@@ -324,6 +317,28 @@ def ageanswer(age):
         quit()
 
 #### Date Calc ####
+def datecalcmenu():
+        print()
+        print(f"{bcolors.BOLD}{bcolors.FAIL}Geburtsdatum Rechner: {bcolors.ENDC}{bcolors.BOLD}Du hast Geburtsdatum Rechner geöffnet!{bcolors.ENDC}")
+        print()
+        sleep(1)
+        datecalcbirth()
+
+
+def datecalcbirth():
+    birthYear = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Was ist dein Geburtsjahr? "))  
+    birthMonth = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Was ist dein Geburtsmonat? "))  
+    birthDay = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Was ist dein Geburtstag? "))
+    try:
+        dateOfBirth = date(birthYear, birthMonth, birthDay)  
+    except ValueError:
+        # Fehlermeldung
+        print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte Antworte mit einem echten Geburtsdatum!")
+        sleep(1)
+        datecalcbirth()
+            
+    datecalc(dateOfBirth)    
+
 def datecalc(birthday):
     # Akuteller Tag
     today = date.today()
