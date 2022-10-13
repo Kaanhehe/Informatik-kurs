@@ -1,5 +1,5 @@
 # Aktuelle Version
-1.7
+1.2
 
 # Infos
 Dies ist der Code zu allen Aufgaben aus dem Informatikkurs von Hr. Reimherr verbunden mit einem Menü.
@@ -15,14 +15,4 @@ Dieser Code wird regelmäßig geupdatet sobald neue Aufgaben gestellt werden ode
 
 1.1 Altersausgabe Aufgabe wurde mit Geburtsdatumsrechner ergänzt
 
-1.2 Numberpress Aufgabe wurde hinzugefügt
-
-1.3 Countdown Aufgabe wurde hinzugefügt
-
-1.4 Zahlenraten Spiel Aufgabe hinzugefügt
-
-1.5 Komentare hinzgefügt
-
-1.6 Bugfixes und einige Änderungen
-
-1.7 Zahlenraten Fehlermeldung repariert
+1.2 Numberpress, Countdown, Zahlenraten Aufgaben wurden hinzugefügt; Bugfixes
