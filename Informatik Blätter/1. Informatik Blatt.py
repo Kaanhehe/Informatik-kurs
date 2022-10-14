@@ -69,12 +69,12 @@ def menu():
     # A Ausgewählt
     if choice == "a" or choice == "A":
         age = "False"
+        requestagehide = "False"
+        requestsexhide = "False"
+        sex = "False"
         print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du hast die für", "A: Altersantwort", "enschieden!")
         sleep(2)
-        print()
-        print(f"{bcolors.BOLD}{bcolors.FAIL}Altersantwort: {bcolors.ENDC}{bcolors.BOLD}Du hast Altersantwort geöffnet!{bcolors.ENDC}")
-        print()
-        ageanswer(age)
+        ageanswer(requestagehide, age, requestsexhide, sex)
 
     # B Ausgewählt    
     elif choice == "b" or choice == "B":
@@ -191,130 +191,210 @@ def menu():
         menu()
 
 #### Ageanswer ####
-def ageanswer(age):
-    # Variabeln
-    hide = False
- #   age = "False"
-    sex = False
-    requesthide = "False"
-    # Alter verstecken Abfrage (Loop)
+def ageanswer(requestagehide, age, requestsexhide, sex):
+    # Öffnungstext
+    print()
+    print(f"{bcolors.BOLD}{bcolors.FAIL}Altersantwort: {bcolors.ENDC}{bcolors.BOLD}Du hast Altersantwort geöffnet!{bcolors.ENDC}")
+    print()
+    sleep(1)
+    # Weiterleitung
+    ageanswerquehide(requestagehide, age, requestsexhide, sex)
 
-    while requesthide != "ja" or requesthide != "Ja" or requesthide != "nein" or requesthide != "Nein":
-        requesthide = (input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Möchtest du dein Alter anzeigen lassen? "))
-        if requesthide == "quit":
-            quit()
-        elif requesthide == "Ja" or requesthide == "ja" or requesthide == "Nein" or requesthide == "nein":
-            break
-        else:
-            print (f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte nur mit Ja oder Nein antworten!")
-            sleep(1)
-            continue
-
-
-    # Verstecken Fehlermeldung
-    if requesthide == False:
-        print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Es ist ein Fehler aufgetreten, bitte versuche es erneut!")
+def ageanswerquehide(requestagehide, age, requestsexhide, sex):
+    # Frage
+    requestagehide = (input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Möchtest du dein Alter anzeigen lassen? "))
+    # Antworten
+    if requestagehide == "quit":
         quit()
-
-
-    # Wenn nicht verstecken
-    if requesthide == "ja" or requesthide == "Ja":
-        hide = False
-        print (f"{bcolors.BOLD}{bcolors.FAIL}Settings: {bcolors.ENDC}Dein Alter wird angezeigt.")
-        sleep(2)
-
-        # Alterabfrage (Loop)
-        if age == "False":
-            while age != int:
-                try:
-                    age = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC} Wie alt bist du? "))
-                except ValueError:
-                    print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Bitte nur mit einer Zahl antworten!")
-                    sleep (1)
-                    continue
-                else:
-                    break
-
-
-    # Wenn verstecken
-    elif requesthide == "nein" or requesthide == "Nein":
-        hide = True
-        print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Dein Alter wird nicht anzeigt.")
-        sleep(2)
-
-        # Alterabfrage (Loop)
-        if age == "False":
-            while age != int:
-                try:
-                    age = int(getpass(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Wie alt bist du? "))
-                except ValueError:
-                    print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte nur mit einer Zahl antworten!")
-                    sleep (1)
-                    continue
-                else:
-                    break
-
-    if age == "quit":
-        quit()
-    # Alter Fehlermeldung
-    if age == "False":
-        print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Es ist ein Fehler aufgetreten, bitte versuche es erneut!")
-        quit()
-
-
-    # Geschlechtsangabe NEW: Nur wenn größer oder gleich 117 (Loop)
-    if age >= 116:
-        while sex != "m" or sex != "M" or sex != "w" or sex != "W":
-            print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Bitte nur mit M (Männlich) oder W (Weiblich) antworten!")
-            sleep(1)
-            sex = (input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Was ist dein Geschlecht? Antworte mit M oder W. "))
-            if sex == "m" or sex == "M" or sex == "w" or sex == "W":
-                break
-
-
-    # Geschlecht Fehlermeldung
-    """
-    if sex == False:
-        print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Es ist ein Fehler aufgetreten, bitte versuche es erneut!")
-        quit()
-    """
-
-    # Alter wird angezeigt
-    if age <= -1 and hide == False:
-        print(f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist noch nicht Geboren, mit deinen", str(age), "Jahren" + excl)
-    elif age <= 3 and age >= 0  and hide == False:
-        print(f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist ein Baby mit deinen", str(age), "Jahren" + excl)
-    elif age <= 12 and age >= 4  and hide == False:
-        print(f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist Ein Kind mit deinen", str(age), "Jahren" + excl)
-    elif age <= 17 and age >= 13  and hide == False:
-        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist Jugendlich mit deinen", str(age), "Jahren" + excl)
-    elif (age >= 18 and age <= 116  and hide == False) or (age >= 116 and sex == "W" and age <= 122  and hide == False):
-        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist Erwachsen mit deinen", str(age), "Jahren" + excl)
-    elif age >= 123 and sex == "W"  and hide == False:
-        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist", age, "Jahre alt und somit hast du den Rekord zur ältesten Frau geknackt. Herzlichen Glüchwunsch!")
-    elif age >= 116 and sex == "M"  and hide == False:
-        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist", age, "Jahre alt und somit hast du den Rekord zum ältesten Mann geknackt. Herzlichen Glüchwunsch!")
-
-    # Alter wird nicht angezeigt
-    elif age <= -1 and hide == True:
-        print(f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist noch nicht Geboren!")
-    elif age <= 3 and age >= 0 and hide == True:
-        print(f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist ein Baby!")
-    elif age <= 12 and age >= 4 and hide == True:
-        print(f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist Ein Kind!")
-    elif age <= 17 and age >= 13 and hide == True:
-        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist Jugendlich!")
-    elif (age >= 18 and age <= 115 and hide == True) or (age >= 116 and sex == "W" and age <= 122 and hide == True):
-        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist Erwachsen!")
-    elif age >= 123 and sex == "W" and hide == True:
-        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist ziemlich alt und somit hast du den Rekord zur ältesten Frau geknackt. Herzlichen Glüchwunsch!")
-    elif age >= 116 and sex == "M" and hide == True:
-        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist ziemlich alt und somit hast du den Rekord zum ältesten Mann geknackt. Herzlichen Glüchwunsch!")
-
+    # Ja
+    elif requestagehide == "ja" or requestagehide == "Ja":
+        ageanswerqueagevis(requestagehide, age, requestsexhide, sex)
+    # Nein
+    elif requestagehide == "nein" or requestagehide == "Nein":
+        ageanswerqueageinv(requestagehide, age, requestsexhide, sex)
     # Fehlermeldung
     else:
+        print (f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte nur mit Ja oder Nein antworten!")
+        sleep(1)
+        ageanswerquehide(requestagehide, age, requestsexhide, sex)
+
+def ageanswerqueagevis(requestagehide, age, requestsexhide, sex):
+    # Ausgabe
+    print (f"{bcolors.BOLD}{bcolors.FAIL}Settings: {bcolors.ENDC}Dein Alter wird angezeigt.")
+    sleep(1.5)
+    # Wenn noch nicht angegeben
+    if age == "False":
+        try:
+            # Frage
+            age = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC} Wie alt bist du? "))
+        except ValueError:
+            # Fehlermeldung
+            print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Bitte nur mit einer Zahl antworten!")
+            sleep (1)
+            ageanswerqueagevis(requestagehide, age, requestsexhide, sex)
+        else:
+            # Weiterleitung
+            ageanswerquesex(requestagehide, age, requestsexhide, sex)
+    else:
+        # Weiterleitung wenn Alter schon angegeben
+        ageanswerquesex(requestagehide, age, requestsexhide, sex)
+
+def ageanswerqueageinv(requestagehide, age, requestsexhide, sex):
+    # Ausgabe
+    print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Dein Alter wird nicht anzeigt.")
+    sleep(1.5)
+    # Wenn Alter noch nicht angegeben
+    if age == "False":
+        try:
+            # Frage
+            age = int(getpass(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC} Wie alt bist du? "))
+        except ValueError:
+            # Fehlermeldung
+            print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Bitte nur mit einer Zahl antworten!")
+            sleep (1)
+            ageanswerqueagevis(requestagehide, age, requestsexhide, sex)
+        else:
+            # Weiterleitung
+            ageanswerquesex(requestagehide, age, requestsexhide, sex)
+    else:
+        # Weiterleitung wenn Alter schon angegeben
+        ageanswerquesex(requestagehide, age, requestsexhide, sex)
+
+def ageanswerquesex(requestagehide, age, requestsexhide, sex):
+    # Wenn Geschlecht noch nicht angegeben und über 115
+    if requestsexhide == "False" and age >= 116:
+        requestsexhide = (input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Möchtest du dein Geschlecht anzeigen lassen? "))
+        # Quit
+        if requestsexhide == "quit":
+            quit()
+        # Ja
+        elif requestsexhide == "ja" or requestsexhide == "Ja":
+            ageanswerquesexvis(requestagehide, age, requestsexhide, sex)
+        # Nein
+        elif requestsexhide == "nein" or requestsexhide == "Nein-":
+            ageanswerquesexinv(requestagehide, age, requestsexhide, sex)
+        else:
+            # Fehlermeldung
+            print (f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte nur mit Ja oder Nein antworten!")
+            sleep(1)
+            ageanswerquesex(requestagehide, age, requestsexhide, sex)
+    else:
+        # Weiterleitung wenn Geschlecht schon angegeben oder unter 116
+        ageanswercheck(requestagehide, age, requestsexhide, sex)
+
+def ageanswerquesexvis(requestagehide, age, requestsexhide, sex):
+    # Ausgabe
+    print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Dein Geschlecht wird anzeigt.")
+    sleep(1.5)
+    # Wenn Geschlecht noch nicht angegeben
+    if sex == "False":
+        # Frage
+        sex = (input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Was ist dein Geschlecht? "))
+        # Quit
+        if sex == "quit":
+            quit()
+        # Männlich
+        elif sex == "m" or sex == "M":
+            ageanswercheck(requestagehide, age, requestsexhide, sex)
+        # Weiblich
+        elif sex == "w" or sex == "W":
+            ageanswercheck(requestagehide, age, requestsexhide, sex)
+        else:
+            # Fehlermeldung
+            print (f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte nur mit M(Männlich) oder W(Weiblich) antworten!")
+            sleep(1)
+            ageanswerquesexvis(requestagehide, age, requestsexhide, sex)
+
+def ageanswerquesexinv(requestagehide, age, requestsexhide, sex):
+    # Ausgabe
+    print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Dein Geschlecht wird nicht anzeigt.")
+    sleep(1.5)
+    # Wenn noch nicht angegeben
+    if sex == "False":
+        sex = (getpass(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Was ist dein Geschlecht? "))
+        # Quit
+        if sex == "quit":
+            quit()
+        # Männlich
+        elif sex == "m" or sex == "M":
+            ageanswercheck(requestagehide, age, requestsexhide, sex)
+        # Weiblich
+        elif sex == "w" or sex == "W":
+            ageanswercheck(requestagehide, age, requestsexhide, sex)
+        else:
+            # Fehlermeldung
+            print (f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte nur mit M(Männlich) oder W(Weiblich) antworten!")
+            sleep(1)
+            ageanswerquesexinv(requestagehide, age, requestsexhide, sex)
+
+def ageanswercheck(requestagehide, age, requestsexhide, sex):
+    # Alterverstecken Check
+    if requestagehide == "False":
         print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Es ist ein Fehler aufgetreten, bitte versuche es erneut!")
-        quit()
+        ageanswerquehide(requestagehide, age, requestsexhide, sex)
+    # Alter Check
+    if age == "False":
+        print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Es ist ein Fehler aufgetreten, bitte versuche es erneut!")
+        ageanswerquehide(requestagehide, age, requestsexhide, sex)
+    # Wenn Alter anzeigen
+    if requestagehide == "ja" or requestagehide == "Ja":
+        ageansweranswervis(requestagehide, age, requestsexhide, sex)
+    # Wenn Alter nicht anzeigen
+    elif requestagehide == "nein" or requestagehide == "Nein":
+        ageansweranswerinv(requestagehide, age, requestsexhide, sex)
+
+def ageansweranswervis(requestagehide, age, requestsexhide, sex):
+
+    # Alters Antworten
+    if age <= -1:
+        print(f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist noch nicht Geboren, mit deinen", str(age), "Jahren" + excl)
+    elif age <= 3 and age >= 0:
+        print(f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist ein Baby mit deinen", str(age), "Jahren" + excl)
+    elif age <= 12 and age >= 4:
+        print(f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist Ein Kind mit deinen", str(age), "Jahren" + excl)
+    elif age <= 17 and age >= 13:
+        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist Jugendlich mit deinen", str(age), "Jahren" + excl)
+    elif (age >= 18 and age <= 116) or (age >= 117 and sex != "m" and age <= 122) or (age >= 117 and sex != "M" and age <= 122):
+        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist Erwachsen mit deinen", str(age), "Jahren" + excl)
+    elif (age >= 123 and sex == "w" and requestsexhide == "ja") or (age >= 123 and sex == "W" and requestsexhide == "Ja") or (age >= 123 and sex == "w" and requestsexhide == "Ja") or (age >= 123 and sex == "W" and requestsexhide == "ja"):
+        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist", age, "Jahre alt und somit hast du den Rekord zur ältesten Frau geknackt. Herzlichen Glüchwunsch!")
+    elif (age >= 117 and sex == "m" and requestsexhide == "ja") or (age >= 117 and sex == "M" and requestsexhide == "Ja") or (age >= 117 and sex == "m" and requestsexhide == "Ja") or (age >= 117 and sex == "M" and requestsexhide == "ja"):
+        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist", age, "Jahre alt und somit hast du den Rekord zum ältesten Mann geknackt. Herzlichen Glüchwunsch!")
+    elif age >=123 and requestsexhide == "nein" or requestsexhide == "Nein":
+        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist ziemlich alt und somit hast du den Rekord zum ältesten Mensch geknackt. Herzlichen Glüchwunsch!")
+    else:
+        # Fehlermeldung
+        print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Es ist ein Fehler aufgetreten, bitte versuche es erneut!")
+        sleep(1)
+        ageanswerquehide(requestagehide, age, requestsexhide, sex)
+    
+def ageansweranswerinv(requestagehide, age, requestsexhide, sex):
+
+    # Altersantworten
+    if age <= -1:
+        print(f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist noch nicht Geboren!")
+    elif age <= 3 and age >= 0:
+        print(f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist ein Baby!")
+    elif age <= 12 and age >= 4:
+        print(f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist Ein Kind!")
+    elif age <= 17 and age >= 13:
+        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist Jugendlich!")
+    elif (age >= 18 and age <= 116) or (age >= 117 and sex == "w" and age <= 122) or (age >= 117 and sex == "W" and age <= 122):
+        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist Erwachsen!")
+    elif (age >= 123 and sex == "w" and requestsexhide == "ja") or (age >= 123 and sex == "W" and requestsexhide == "Ja") or (age >= 123 and sex == "w" and requestsexhide == "Ja") or (age >= 123 and sex == "W" and requestsexhide == "ja"):
+        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist ziemlich alt und somit hast du den Rekord zur ältesten Frau geknackt. Herzlichen Glüchwunsch!")
+    elif (age >= 117 and sex == "m" and requestsexhide == "ja") or (age >= 117 and sex == "M" and requestsexhide == "Ja") or (age >= 117 and sex == "m" and requestsexhide == "Ja") or (age >= 117 and sex == "M" and requestsexhide == "ja"):
+        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist ziemlich alt und somit hast du den Rekord zum ältesten Mann geknackt. Herzlichen Glüchwunsch!")
+    elif age >=123 and requestsexhide == "nein" or requestsexhide == "Nein":
+        print (f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Du bist ziemlich alt und somit hast du den Rekord zum ältesten Mensch geknackt. Herzlichen Glüchwunsch!")
+
+
+    else:
+        # Fehlermeldung
+        print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Es ist ein Fehler aufgetreten, bitte versuche es erneut!")
+        sleep(1)
+        ageanswerquehide(requestagehide, age, requestsexhide, sex)
+
 
 #### Date Calc ####
 def datecalcmenu():

@@ -1,5 +1,5 @@
 # Aktuelle Version
-1.2.4
+1.2.5
 
 # Infos
 Dies ist der Code zu allen Aufgaben aus dem Informatikkurs von Hr. Reimherr verbunden mit einem Menü.
@@ -30,3 +30,5 @@ Dieser Code wird regelmäßig geupdatet sobald neue Aufgaben gestellt werden ode
 1.2.3.2 Geburtsdatum Rechner Fehlermeldung hinzugefügt
 
 1.2.4 Countdown Ende und Kommentare hinzugefügt
+
+1.2.5 Altersantwort komplett Überarbeitet
