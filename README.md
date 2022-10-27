@@ -16,3 +16,5 @@ Dieser Code wird regelmäßig geupdatet sobald neue Aufgaben gestellt werden ode
 1.1 Altersausgabe Aufgabe wurde mit Geburtsdatumsrechner ergänzt
 
 1.2 Numberpress, Countdown, Zahlenraten Aufgaben wurden hinzugefügt; Bugfixes
+
+1.2.6 Zahlenraten Runden und Versuche hinzugefügt; Altersantwort Überarbeitet, Bugfixes
