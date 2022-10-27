@@ -32,3 +32,5 @@ Dieser Code wird regelmäßig geupdatet sobald neue Aufgaben gestellt werden ode
 1.2.4 Countdown Ende und Kommentare hinzugefügt
 
 1.2.5 Altersantwort komplett Überarbeitet
+
+1.2.6 Zahlenraten Runden hinzugefügt
