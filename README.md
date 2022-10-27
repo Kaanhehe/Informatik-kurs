@@ -1,5 +1,5 @@
 # Aktuelle Version
-1.2
+1.3
 
 # Infos
 Dies ist der Code zu allen Aufgaben aus dem Informatikkurs von Hr. Reimherr verbunden mit einem Menü.
@@ -17,4 +17,4 @@ Dieser Code wird regelmäßig geupdatet sobald neue Aufgaben gestellt werden ode
 
 1.2 Numberpress, Countdown, Zahlenraten Aufgaben wurden hinzugefügt; Bugfixes
 
-1.2.6 Zahlenraten Runden und Versuche hinzugefügt; Altersantwort Überarbeitet, Bugfixes
+1.3 Zahlenraten Runden und Versuche hinzugefügt; Altersantwort neu geschrieben; Bugfixes (Kommentare, Fehlermeldungen)

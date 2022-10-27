@@ -739,6 +739,5 @@ def numberratenans(searched, rounds):
                 solved = True
 
 
-
 #Code
 main()
