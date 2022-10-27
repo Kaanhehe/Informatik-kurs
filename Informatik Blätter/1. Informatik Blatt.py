@@ -96,9 +96,10 @@ def menu():
 
     # E Ausgewählt
     elif choice == "e" or choice == "E":
+        rounds = 0
         print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du hast dich für", "E: Zahlenraten", "entschieden!")
         sleep(2)
-        numberraten()
+        numberraten(rounds)
 
     # F Ausgewählt
     elif choice == "f" or choice == "F":
@@ -183,6 +184,10 @@ def menu():
     # Z Ausgewählt
     elif choice == "z" or choice == "Z":
         sleep
+    
+    # Quit
+    elif choice == "ende" or choice == "Ende" or choice == "Beenden" or choice == "beenden" or choice == "quit" or choice == "Quit":
+        quit()
     
     # Fehlermeldung
     else:
@@ -637,16 +642,50 @@ def countdownprocinv():
         sleep(sleeptime)
 
 ### Numberraten ####
-def numberraten():
+def numberraten(rounds):
     solved = False
     # Öffnungstext
     print()
     print(f"{bcolors.BOLD}{bcolors.FAIL}Zahlenraten:{bcolors.ENDC}", f"{bcolors.BOLD}Du hast Zahlenraten gestartet!{bcolors.ENDC}")
     print()
     sleep(1)
-    numberratenque()
+
+    numberratenstartque(rounds)
         
-def numberratenque():
+def numberratenstartque(rounds):
+    if rounds == 0:
+        startround = input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Möchtest du eine Runde starten? ")
+    elif rounds >= 1:
+        startround = input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Möchtest du eine weitere Runde starten? ")
+    else:
+        while True:
+            print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Es ist ein Fehler augetreten!")
+            wherego = input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Wohin willst du zurückkehren? ")
+            if wherego == "Menu" or wherego == "menu":
+                menu()
+            elif wherego == "Zahlenraten" or wherego == "zahlenraten":
+                numberraten()
+            elif wherego == "ende" or wherego == "Ende" or wherego == "Beenden" or wherego == "beenden" or wherego == "quit" or wherego == "Quit":
+                quit()
+            else:
+                print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte anworte nur mit Menu, Zahlenraten oder Beenden/Quit")
+                continue
+    if startround == "ja" or startround == "Ja":
+        print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du startest eine Runde!")
+        sleep(0.5)
+        numberratenque(rounds)
+    elif startround == "nein" or startround == "Nein":
+        print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du gehst zurück ins Menu!")
+        menu()
+    elif startround == "ende" or startround == "Ende" or startround == "Beenden" or startround == "beenden" or startround == "quit" or startround == "Quit":
+        quit()
+    else:
+        print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte anworte nur mit Ja, Nein oder Beenden/Quit!")
+        sleep(1)
+        numberratenstartque(rounds)
+    
+
+def numberratenque(rounds):
     try:
         # 1. Frage
         searched = int(getpass(f"{bcolors.BOLD}{bcolors.FAIL}Spieler 1: {bcolors.ENDC}Wie soll die zu erratene Zahl lauten? "))
@@ -657,9 +696,9 @@ def numberratenque():
         numberratenque()
     else:
         sleep(1)
-        numberratenans(searched)
+        numberratenans(searched, rounds)
 
-def numberratenans(searched):
+def numberratenans(searched, rounds):
     solved = False
     tries = 0
     while solved == False:
@@ -670,15 +709,19 @@ def numberratenans(searched):
             # Fehlermeldung
             print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte anworte nur mit Zahlen!")
             sleep(2)
-            numberratenans(searched)
+            numberratenans(searched, rounds)
         else:
+            print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du hast mit", rate,"geraten!")
+            sleep(1)
             # Antworten
             if rate > searched:
                 tries = tries + 1
                 print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du hast zu hoch geraten!")
+                sleep(1)
             if rate < searched:
                 tries = tries + 1
                 print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du hast zu niedrig geraten!")
+                sleep(1)            
             if rate == searched:
                 # Ende 
                 tries = tries + 1
@@ -686,9 +729,13 @@ def numberratenans(searched):
                 # Bei mehr als 1 Versuch
                 if tries > 1:
                     print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}{bcolors.BOLD}{bcolors.WARNING}Spieler 2 {bcolors.ENDC}hat", tries, "Versuche gebraucht um die gesuchte Zahl zu finden!")
+                    rounds = rounds +1
+                    numberratenstartque(rounds)
                 # Bei einem Versuch
                 elif tries == 1:
                     print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}{bcolors.BOLD}{bcolors.WARNING}Spieler 2 {bcolors.ENDC}hat", tries, "Versuch gebraucht um die gesuchte Zahl zu finden!")
+                    rounds = rounds +1
+                    numberratenstartque(rounds)
                 solved = True
 
 
