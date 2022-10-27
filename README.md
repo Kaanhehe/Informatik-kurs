@@ -1,5 +1,5 @@
 # Aktuelle Version
-1.2.5
+1.3
 
 # Infos
 Dies ist der Code zu allen Aufgaben aus dem Informatikkurs von Hr. Reimherr verbunden mit einem Menü.
@@ -33,4 +33,4 @@ Dieser Code wird regelmäßig geupdatet sobald neue Aufgaben gestellt werden ode
 
 1.2.5 Altersantwort komplett Überarbeitet
 
-1.2.6 Zahlenraten Runden hinzugefügt
+1.3 Zahlenraten Runden hinzugefügt
