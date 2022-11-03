@@ -1,5 +1,7 @@
 # Imports
 from getpass import getpass
+from multiprocessing.sharedctypes import Value
+from random import random
 from time import sleep
 from datetime import date
 import csv
@@ -40,9 +42,9 @@ def menu():
     C: Zahlenausgabe
     D: Countdown
     E: Zahlenraten
-    F: ...
-    G: ...
-    H: ...
+    F: Taschenrechner
+    G: BMI Rechner
+    H: Schaltjahrrechner
     I: ...
     J: ...
     K: ...
@@ -103,15 +105,22 @@ def menu():
 
     # F Ausgewählt
     elif choice == "f" or choice == "F":
-        sleep
+        print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du hast dich für", "F: Taschenrechner", "entschieden!")
+        sleep(2)
+        calculator()
     
     # G Ausgewählt
     elif choice == "g" or choice == "G":
-        sleep
+        print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du hast dich für", "G: BMI", "entschieden!")
+        sleep(2)
+        bmi()
+        
 
     # H Ausgewählt
     elif choice == "h" or choice == "H":
-        sleep
+        print (f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du hast dich für", "H: Schaltjahrrechner", "entschieden!")
+        sleep(2)
+        leapyear()
 
     # I Ausgewählt
     elif choice == "i" or choice == "I":
@@ -192,7 +201,7 @@ def menu():
     # Fehlermeldung
     else:
         print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte antworte nur mit den Angegebenen Buchstaben!")
-        sleep(1)
+        sleep(2)
         menu()
 
 #### Ageanswer ####
@@ -671,7 +680,7 @@ def numberratenstartque(rounds):
                 print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte anworte nur mit Menu, Zahlenraten oder Beenden/Quit")
                 continue
     if startround == "ja" or startround == "Ja":
-        print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du startest eine Runde!")
+        print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Du startest eine Runde!")  
         sleep(0.5)
         numberratenque(rounds)
     elif startround == "nein" or startround == "Nein":
@@ -687,8 +696,20 @@ def numberratenstartque(rounds):
 
 def numberratenque(rounds):
     try:
-        # 1. Frage
-        searched = int(getpass(f"{bcolors.BOLD}{bcolors.FAIL}Spieler 1: {bcolors.ENDC}Wie soll die zu erratene Zahl lauten? "))
+        while True:
+            player = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Wie viele Spieler seid ihr? "))
+            if player == 1:
+                searched = random()
+                print(searched)
+                break
+            elif player == 2:
+                # 1. Frage
+                searched = int(getpass(f"{bcolors.BOLD}{bcolors.FAIL}Spieler 1: {bcolors.ENDC}Wie soll die zu erratene Zahl lauten? "))
+                break
+            else:
+                print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte antworte mit 1 oder 2!")
+                continue  
+        
     except ValueError:
         # Fehlermeldung
         print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte anworte nur mit Zahlen!")
@@ -737,6 +758,111 @@ def numberratenans(searched, rounds):
                     rounds = rounds +1
                     numberratenstartque(rounds)
                 solved = True
+
+def calculator():
+    while True:
+        try:
+            number1 = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Wie soll deine 1. Zahl lauten: "))
+        except ValueError:
+            print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte Antworte nur mit Zahlen!")
+            continue
+        else:
+            break
+    while True:
+        try:
+            number2 = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Wie soll deine 2. Zahl lauten? "))
+        except ValueError:
+            print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte antworte nur mit Zahlen!")
+            continue
+        else:
+            break
+    while True:
+        arith = input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Wie soll das Rechenzeichen sein? ")
+        if arith == "+":
+            break
+        elif arith == "-":
+            break
+        elif arith == "/":
+            break
+        elif arith == "*":
+            break
+        else:
+            print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte antworte nur mit +, -, / oder *!")
+            continue
+
+    if arith == "+":
+        print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Das Ergebnis ist:",number1+number2)
+    elif arith == "-":
+        print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Das Ergebnis ist:",number1-number2)
+    elif arith == "/":
+        print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Das Ergebnis ist:",number1/number2)
+    elif arith == "*":
+        print(f"{bcolors.BOLD}{bcolors.FAIL}System: {bcolors.ENDC}Das Ergebnis ist:",number1*number2)
+    else:
+        while True:
+            print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Es ist ein Fehler augetreten!")
+            wherego = input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Wohin willst du zurückkehren? ")
+            if wherego == "Menu" or wherego == "menu":
+                menu()
+            elif wherego == "Taschenrechner" or wherego == "taschenrechner":
+                calculator()
+            elif wherego == "ende" or wherego == "Ende" or wherego == "Beenden" or wherego == "beenden" or wherego == "quit" or wherego == "Quit":
+                quit()
+            else:
+                print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte anworte nur mit Menu, Taschenrechner oder Beenden/Quit")
+                continue
+
+def bmi():
+    while True:
+        try:
+            weight = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Gewicht(kg)? "))
+        except ValueError:
+            print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte antworte nur mit einer Zahl!")
+            continue
+        else:
+            break
+    while True:
+        try:
+            height = float(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Deine Größe(m)? "))
+        except:
+            print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte antworte nur mit eine Kommazahl!")
+            continue
+        else:
+            break
+    bmi = weight/height**2
+    print(f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC}Dein BMI ist:", bmi)
+
+
+
+def leapyear():
+    while True:
+        year = int(input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Geben sie ein Jahr an:"))
+        if (year % 4 == 0) and (year % 100 != 0) or (year % 400 == 0):
+            print(f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC} Es ist ein Schaltjahr")
+        else:
+            print(f"{bcolors.BOLD}{bcolors.FAIL}Answer: {bcolors.ENDC} Es ist kein Schaltjahr")
+            while True:
+                retry = (input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Willst du ein weiteres Jahr überprüfen? "))
+                if retry == "ja" or retry == "Ja":
+                    leapyear()
+                elif retry == "nein" or retry == "Nein":
+                    while True:
+                        wherego = input(f"{bcolors.BOLD}{bcolors.FAIL}Question: {bcolors.ENDC}Wohin willst du zurückkehren? ")
+                        if wherego == "Menu" or wherego == "menu":
+                            menu()
+                        elif wherego == "schaltjahrrechner" or wherego == "Schaltjahrrechner":
+                            leapyear()
+                        elif wherego == "ende" or wherego == "Ende" or wherego == "Beenden" or wherego == "beenden" or wherego == "quit" or wherego == "Quit":
+                            quit()
+                        else:
+                            print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte anworte nur mit Menu, Schaltjahrrechner oder Beenden/Quit")
+                            continue
+                else:
+                    print(f"{bcolors.BOLD}{bcolors.FAIL}Error: {bcolors.ENDC}Bitte Antworte nur mit Ja oder Nein!")
+                    continue
+
+            
+
 
 
 #Code

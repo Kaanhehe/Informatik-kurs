@@ -34,3 +34,5 @@ Dieser Code wird regelmäßig geupdatet sobald neue Aufgaben gestellt werden ode
 1.2.5 Altersantwort komplett Überarbeitet
 
 1.3 Zahlenraten Runden hinzugefügt
+
+1.4 Taschenrechner, BMI Rechner, Schaltjahrrechner hinzugefügt
