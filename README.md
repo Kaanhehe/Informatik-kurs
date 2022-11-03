@@ -18,3 +18,5 @@ Dieser Code wird regelmäßig geupdatet sobald neue Aufgaben gestellt werden ode
 1.2 Numberpress, Countdown, Zahlenraten Aufgaben wurden hinzugefügt; Bugfixes
 
 1.3 Zahlenraten Runden und Versuche hinzugefügt; Altersantwort neu geschrieben; Bugfixes (Kommentare, Fehlermeldungen)
+
+1.4 Taschenrechner, BMI Rechner, Schaltjahrrechner hinzugefügt
