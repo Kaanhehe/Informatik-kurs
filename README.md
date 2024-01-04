@@ -1,5 +1,6 @@
 # Infos
 Dieses Repository wurde von mir verwendet um die Aufgaben meines Informatik Kurses in einem Projekt zusammenzufassen.
+Dieser Code und dieses Repository sind komplett kaotisch, es war mein erster Kontakt mit GitHub.
 
 # Aktuelle Version
 1.3
