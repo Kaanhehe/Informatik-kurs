@@ -1,9 +1,8 @@
+# Infos
+Dieses Repository wurde von mir verwendet um die Aufgaben meines Informatik Kurses in einem Projekt zusammenzufassen.
+
 # Aktuelle Version
 1.3
-
-# Infos
-Dies ist der Code zu allen Aufgaben aus dem Informatikkurs von Hr. Reimherr verbunden mit einem Menü.
-Dies sind aber nicht rein die Aufgaben, ich habe sie nochmal auf meine Art geändert.
 
 # Updates
 Dieser Code wird regelmäßig geupdatet sobald neue Aufgaben gestellt werden oder Fehler im Code gefunden werden.
